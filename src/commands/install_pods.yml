@@ -1,0 +1,21 @@
+description: Install Cocoapods
+
+parameters:
+  pod_install_directory:
+    description: The location of the "ios" directory
+    type: string
+    default: "ios"
+
+steps:
+  - restore_cache:
+      key: cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
+
+  - run:
+      name: Install CocoaPods
+      command: |
+        cd <<parameters.pod_install_directory>> && pod install --repo-update && cd -
+
+  - save_cache:
+      key: cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
+      paths:
+        - <<parameters.pod_install_directory>>/Pods

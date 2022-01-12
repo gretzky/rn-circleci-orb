@@ -1,0 +1,57 @@
+description: Runs a Fastlane lane for a given platform.
+
+parameters:
+  platform:
+    description: The platform to deploy, either "android" or "ios".
+    type: enum
+    enum: ["android", "ios"]
+  lane:
+    description: The fastlane lane to run for deployment.
+    type: string
+  description:
+    description: Descriptor of the Fastlane lane running
+    type: string
+  yarn_cache:
+    description: Save and restore the build cache? Defaults to true
+    type: boolean
+    default: true
+  yarn_cache_folder:
+    description: The path to the yarn cache folder.  Defaults to ~/.tmp/yarn
+    type: string
+    default: "~/.tmp/yarn"
+  yarn_ignore_scripts:
+    description: Ignore scripts to be run on yarn commands. Defaults to false
+    type: boolean
+    default: false
+
+steps:
+  - yarn_install:
+      cache: <<parameters.yarn_cache>>
+      cache_folder: <<parameters.yarn_cache_folder>>
+      ignore_scripts: <<parameters.yarn_ignore_scripts>>
+
+  - when:
+      condition:
+        equal: [ios, <<parameters.platform>>]
+      steps:
+        - install_pods
+
+  - restore_cache:
+      key: 1-gems-{{ checksum "Gemfile.lock" }}
+
+  - run:
+      name: Install gems from Gemfile.lock
+      command: bundle check || bundle install --path vendor/bundle
+
+  - run:
+      name: Install Fastlane plugins
+      command: fastlane install_plugins
+
+  - save_cache:
+      key: 1-gems-{{ checksum "Gemfile.lock" }}
+      paths:
+        - vendor/bundle
+
+  - run:
+      name: <<parameters.description>>
+      command: bundle exec fastlane <<parameters.platform>> <<parameters.lane>>
