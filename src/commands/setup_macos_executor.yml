@@ -53,7 +53,6 @@ steps:
 
   - save_cache:
       paths:
-        - /usr/local/Homebrew
         - ~/Library/Caches/Homebrew
       key: |
         brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
