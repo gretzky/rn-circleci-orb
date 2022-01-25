@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/gretzky/rn-circleci-orb/compare/v1.0.0...v1.0.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* **detox:** update macos executor command to setup detox appropriately ([eeffd25](https://github.com/gretzky/rn-circleci-orb/commit/eeffd25baa360344d815acb59834f784a3cba2b5))
+
 # 1.0.0 (2022-01-12)
 
 
