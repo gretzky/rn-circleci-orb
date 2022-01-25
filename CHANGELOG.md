@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/gretzky/rn-circleci-orb/compare/v1.0.3...v1.1.0) (2022-01-25)
+
+
+### Features
+
+* **macos_executor:** add configure_detox variable for whether or not to setup detox on macos ([8832a12](https://github.com/gretzky/rn-circleci-orb/commit/8832a12c531ca23602f869eda6b6a574d5d263b6))
+
 ## [1.0.3](https://github.com/gretzky/rn-circleci-orb/compare/v1.0.2...v1.0.3) (2022-01-25)
 
 
