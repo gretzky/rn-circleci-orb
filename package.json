@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "private": true,
   "description": "A CircleCI Orb used for building and deploying React Native apps.",
-  "author": "Sara Pope <sara@verypossible.com>",
+  "author": "Sara Pope <sara@thepope.dev>",
   "license": "MIT",
   "repository": {
     "type": "git",

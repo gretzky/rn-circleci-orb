@@ -16,7 +16,7 @@ parameters:
   logcat_grep:
     description: ADB logs will be shown in the "Start Android Emulator" commands, but we filter it using grep to avoid noise. You can specify additional strings to grep for. Make sure you escape special characters.
     type: string
-    default: "com.verypossible"
+    default: "com.org.name"
 
 steps:
   - run:
