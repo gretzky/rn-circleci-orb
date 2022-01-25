@@ -65,6 +65,10 @@ parameters:
     description: Ignore scripts to be run on yarn commands. Defaults to false
     type: boolean
     default: false
+  configure_detox:
+    description: Whether or not to install and configure Detox for e2e testing
+    type: boolean
+    default: false
 
 steps:
   - when:
@@ -80,6 +84,7 @@ steps:
 
   - setup_macos_executor:
       node_version: <<parameters.node_version>>
+      configure_detox: <<parameters.configure_detox>>
 
   - yarn_install:
       cache: <<parameters.yarn_cache>>
