@@ -4,10 +4,14 @@ parameters:
   device:
     description: The type of device you want to start.
     type: string
-    default: "iPhone 13"
+    default: "iPhone 11"
+  in_background:
+    description: Whether or not simulator should boot in background. Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - run:
       name: Start iOS simulator (background)
-      background: true
+      background: <<parameters.in_background>>
       command: xcrun simctl boot "<<parameters.device>>" || true
