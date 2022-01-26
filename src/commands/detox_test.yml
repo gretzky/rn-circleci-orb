@@ -9,8 +9,29 @@ parameters:
     type: enum
     enum: ["fatal", "error", "warn", "info", "verbose", "trace"]
     default: warn
+  screenshot_failing:
+    description: Whether or not to take screenshots of failing tests. Defaults to true
+    type: boolean
+    default: true
+  screenshot_artifact_path:
+    description: Where to store screenshot artifacts. Defaults to /tmp/detox_artifacts
+    type: string
+    default: /tmp/detox_artifacts
 
 steps:
-  - run:
-      name: Detox Test
-      command: detox test -c <<parameters.configuration>> -l <<parameters.loglevel>> --headless
+  - when:
+      condition:
+        equal: [true, <<parameters.screenshot_failing>>]
+      steps:
+        - run:
+            name: Detox Test
+            command: detox test -c <<parameters.configuration>> -l <<parameters.loglevel>> --headless --take-screenshots failing artifacts_location /tmp/detox_artifacts
+        - store_artifacts:
+            path: /tmp/detox_artifacts
+  - when:
+      condition:
+        equal: [false, <<parameters.screenshot_failing>>]
+      steps:
+        - run:
+            name: Detox Test
+            command: detox test -c <<parameters.configuration>> -l <<parameters.loglevel>> --headless

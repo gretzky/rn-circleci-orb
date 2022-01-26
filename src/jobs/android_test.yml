@@ -76,6 +76,14 @@ parameters:
     description: Whether or not to cache homebrew after install. Defaults to true
     type: boolean
     default: true
+  screenshot_failing:
+    description: Whether or not to take screenshots of failing tests. Defaults to true
+    type: boolean
+    default: true
+  screenshot_artifact_path:
+    description: Where to store screenshot artifacts. Defaults to /tmp/detox_artifacts
+    type: string
+    default: /tmp/detox_artifacts
 
 steps:
   - when:
@@ -112,9 +120,14 @@ steps:
       build_tools_version: <<parameters.build_tools_version>>
       logcat_grep: <<parameters.logcat_grep>>
 
+  - detox_build:
+      configuration: <<parameters.detox_configuration>>
+
   - detox_test:
       configuration: <<parameters.detox_configuration>>
       loglevel: <<parameters.detox_loglevel>>
+      screenshot_failing: <<parameters.screenshot_failing>>
+      screenshot_artifact_path: <<parameters.screenshot_artifact_path>>
 
   - when:
       condition: <<parameters.store_artifact_path>>

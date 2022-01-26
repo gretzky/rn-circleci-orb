@@ -135,9 +135,14 @@ steps:
       scheme: <<parameters.scheme>>
       project_type: <<parameters.project_type>>
 
+  - detox_build:
+      configuration: <<parameters.detox_configuration>>
+
   - detox_test:
       configuration: <<parameters.detox_configuration>>
       loglevel: <<parameters.detox_loglevel>>
+      screenshot_failing: <<parameters.screenshot_failing>>
+      screenshot_artifact_path: <<parameters.screenshot_artifact_path>>
 
   - when:
       condition: <<parameters.store_artifact_path>>
