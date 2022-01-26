@@ -113,7 +113,7 @@ steps:
       device: <<parameters.device>>
 
   - yarn_install:
-      cache: <<parameters.yarn_cache>>
+      use_cache: <<parameters.yarn_cache>>
       cache_folder: <<parameters.yarn_cache_folder>>
       ignore_scripts: <<parameters.yarn_ignore_scripts>>
 

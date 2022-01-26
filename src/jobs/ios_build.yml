@@ -100,7 +100,7 @@ steps:
       use_homebrew_cache: <<parameters.use_homebrew_cache>>
 
   - yarn_install:
-      cache: <<parameters.yarn_cache>>
+      use_cache: <<parameters.yarn_cache>>
       cache_folder: <<parameters.yarn_cache_folder>>
       ignore_scripts: <<parameters.yarn_ignore_scripts>>
 
