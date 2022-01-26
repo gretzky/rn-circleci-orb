@@ -1,3 +1,18 @@
+## [1.1.4](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.3...v1.1.4) (2022-01-26)
+
+
+### Bug Fixes
+
+* **android:** add use_cache command to android build ([f36d7fa](https://github.com/gretzky/rn-circleci-orb/commit/f36d7faae7f25d69867a1a7939ff4258845d9e3e))
+* **android_build:** update android_build command to set caching as a booelan ([7c7a21b](https://github.com/gretzky/rn-circleci-orb/commit/7c7a21babf59a8830c0b27f8221206a3872e48c3))
+* **ios:** add background parameter for ios simulator ([6b90388](https://github.com/gretzky/rn-circleci-orb/commit/6b903884a8d2bd6d2c287a4ea38157ad4a2435ed))
+* **ios:** update install_pods to make caching optional ([cd8b643](https://github.com/gretzky/rn-circleci-orb/commit/cd8b643b00bd21372c5893f4865618c0a851d0f2))
+* **ios:** update ios_build command to make caching optional ([99e7d83](https://github.com/gretzky/rn-circleci-orb/commit/99e7d83a4306cf68d1e01b178f86c8c56b5a6faf))
+* **jobs:** update jobs ([8036735](https://github.com/gretzky/rn-circleci-orb/commit/8036735dde2f596ab0c797954859d472173299c3))
+* **macos:** update nvm and add optional caching to setup_macos ([2933e38](https://github.com/gretzky/rn-circleci-orb/commit/2933e388815369f35dbd0570053c5359b08df947))
+* **yarn:** update yarn install ([52262bb](https://github.com/gretzky/rn-circleci-orb/commit/52262bb73edddad110dcef16ba87208cc0c6705a))
+* **yarn:** update yarn_install cache param ([243a7ae](https://github.com/gretzky/rn-circleci-orb/commit/243a7ae93961ef8e3ee9f8060b99888ef1308817))
+
 ## [1.1.3](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.2...v1.1.3) (2022-01-26)
 
 
