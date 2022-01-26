@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.2...v1.1.3) (2022-01-26)
+
+
+### Bug Fixes
+
+* **ios:** add pod_install_directory param to install_pods commands ([eda3922](https://github.com/gretzky/rn-circleci-orb/commit/eda3922810154e80177b710ab016310e176229c3))
+
 ## [1.1.2](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.1...v1.1.2) (2022-01-26)
 
 
