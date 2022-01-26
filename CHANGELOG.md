@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.0...v1.1.1) (2022-01-26)
+
+
+### Bug Fixes
+
+* **ios:** set configure_detox to true for ios_build_and_test ([8d79fb6](https://github.com/gretzky/rn-circleci-orb/commit/8d79fb677828e8a51cd582d72a48a2fa22271c4c))
+
 # [1.1.0](https://github.com/gretzky/rn-circleci-orb/compare/v1.0.3...v1.1.0) (2022-01-25)
 
 
