@@ -8,6 +8,10 @@ parameters:
   configure_detox:
     description: Whether or not to configure Detox
     type: boolean
+  use_cache:
+    description: Whether or not to cache homebrew after install. Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - run:
@@ -21,16 +25,19 @@ steps:
         echo 'export JAVA_HOME=$(/usr/libexec/java_home)' >> $BASH_ENV
         source $BASH_ENV
 
-  - restore_cache:
-      key: |
-        brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
+  - when:
+      condition: <<parameters.use_cache>>
+      steps:
+        - restore_cache:
+            key: |
+              brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
 
   - run:
       name: Install NVM
       # after `curl`, bashrc contains the script to load nvm, we need to source it to use it
       command: |
         set +e
-        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash
         echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
         echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
         source ~/.bashrc
@@ -57,8 +64,11 @@ steps:
               touch .watchmanconfig
               node -v
 
-  - save_cache:
-      paths:
-        - ~/Library/Caches/Homebrew
-      key: |
-        brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
+  - when:
+      condition: <<parameters.use_cache>>
+      steps:
+        - save_cache:
+            paths:
+              - ~/Library/Caches/Homebrew
+            key: |
+              brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
