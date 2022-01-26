@@ -92,7 +92,7 @@ steps:
               equal: [aab, <<parameters.bundle_type>>]
             steps:
               - persist_to_workspace:
-                  root: .
+                  root: <<parameters.workspace_root>>
                   paths:
                     - <<parameters.project_path>>/app/build/outputs/bundle/release/app-release.aab
         - when:
@@ -100,7 +100,7 @@ steps:
               equal: [apk, <<parameters.bundle_type>>]
             steps:
               - persist_to_workspace:
-                  root: .
+                  root: <<parameters.workspace_root>>
                   paths:
                     - <<parameters.project_path>>/app/build/outputs/apk/release/app-release.apk
 

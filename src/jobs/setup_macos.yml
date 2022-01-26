@@ -1,0 +1,67 @@
+description: Sets up the macOS machine.
+
+executor: macos
+
+parameters:
+  # For this job
+  workspace_root:
+    description: Workspace root path that is either an absolute path or a path relative to the working directory. Defaults to '.' (the working directory).
+    type: string
+    default: .
+  # For macos executor
+  node_version:
+    description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), a fully qualified version ("8.4.1"), or the long term stable release ("lts")
+    type: string
+    default: "lts"
+  yarn_cache:
+    description: Save and restore the build cache? Defaults to true
+    type: boolean
+    default: true
+  yarn_cache_folder:
+    description: The path to the yarn cache folder.  Defaults to ~/.tmp/yarn
+    type: string
+    default: "~/.tmp/yarn"
+  yarn_ignore_scripts:
+    description: Ignore scripts to be run on yarn commands. Defaults to false
+    type: boolean
+    default: false
+  configure_detox:
+    description: Whether or not to install and configure Detox for e2e testing
+    type: boolean
+    default: true
+  pod_install_directory:
+    description: The location of the "ios" directory for `pod install`
+    type: string
+    default: "ios"
+  persist_to_workspace:
+    description: Should this job persist files to a workspace? Defaults to true
+    type: boolean
+    default: true
+
+steps:
+  - attach_workspace:
+      at: <<parameters.workspace_root>>
+
+  - setup_macos_executor:
+      node_version: <<parameters.node_version>>
+      configure_detox: <<parameters.configure_detox>>
+
+  - yarn_install:
+      cache: <<parameters.yarn_cache>>
+      cache_folder: <<parameters.yarn_cache_folder>>
+      ignore_scripts: <<parameters.yarn_ignore_scripts>>
+
+  - install_pods:
+      pod_install_directory: <<parameters.pod_install_directory>>
+
+  - when:
+      condition: <<parameters.persist_to_workspace>>
+      steps:
+        - when:
+            condition:
+              equal: [aab, <<parameters.bundle_type>>]
+            steps:
+              - persist_to_workspace:
+                  root: <<parameters.workspace_root>>
+                  paths:
+                    - .

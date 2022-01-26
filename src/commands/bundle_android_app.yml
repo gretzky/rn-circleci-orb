@@ -10,10 +10,10 @@ parameters:
     type: string
     default: "release"
   bundle_type:
-    description: The type of app to bundle, either 'aab' (Android App Bundles) or 'apk'. Google's recommendation is aab, which is the default.
+    description: The type of app to bundle, either 'aab' (Android App Bundles) or 'apk'. Google's recommendation is aab, but the default is apk since Detox expects an apk.
     type: enum
     enum: ["aab", "apk"]
-    default: "aab"
+    default: "apk"
   exclude_js:
     description: Exclude bundling JS in Gradle build command. JS will be bundled separately.
     type: boolean
