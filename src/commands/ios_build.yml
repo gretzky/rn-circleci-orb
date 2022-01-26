@@ -20,26 +20,42 @@ parameters:
   device:
     description: The type of device you want to build for.
     type: string
-    default: "iPhone 13"
+    default: "iPhone 11"
   scheme:
     description: The scheme to use.
     type: string
+  use_cache:
+    description: Save and restore the build cache? Defaults to true
+    type: boolean
+    default: true
 
 steps:
-  - restore_cache:
-      name: Restoring iOS Build caches
-      keys:
-        - ios-build-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ .Environment.CACHE_VERSION }}
+  - when:
+      condition: <<parameters.use_cache>>
+      steps:
+        - restore_cache:
+            name: Restoring iOS Build caches
+            keys:
+              - ios-build-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ .Environment.CACHE_VERSION }}
 
   - run:
       name: Build iOS App
       command: |
         export RCT_NO_LAUNCH_PACKAGER=true
-        xcodebuild -<<parameters.project_type>> <<parameters.project_path>> -destination 'platform=iOS Simulator,name=<<parameters.device>>' -scheme <<parameters.scheme>> -parallelizeTargets -configuration <<parameters.build_configuration>> -derivedDataPath <<parameters.derived_data_path>>  -UseModernBuildSystem=YES | xcpretty -k
+        xcodebuild -<<parameters.project_type>> <<parameters.project_path>> \ 
+          -destination 'platform=iOS Simulator,name=<<parameters.device>>' \
+          -scheme <<parameters.scheme>> \
+          -parallelizeTargets \
+          -configuration <<parameters.build_configuration>> \
+          -derivedDataPath <<parameters.derived_data_path>> \
+          -UseModernBuildSystem=YES | xcpretty -k
 
-  - save_cache:
-      name: Saving iOS Build Cache
-      paths:
-        - <<parameters.derived_data_path>>/Build
-      key: ios-build-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ .Environment.CACHE_VERSION }}
-      when: always
+  - when:
+      condition: <<parameters.use_cache>>
+      steps:
+        - save_cache:
+            name: Saving iOS Build Cache
+            paths:
+              - <<parameters.derived_data_path>>/Build
+            key: ios-build-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ .Environment.CACHE_VERSION }}
+            when: always
