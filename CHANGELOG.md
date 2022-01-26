@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.1...v1.1.2) (2022-01-26)
+
+
+### Bug Fixes
+
+* **ios:** make default device consistent ([c8b0d35](https://github.com/gretzky/rn-circleci-orb/commit/c8b0d354d2c17a83b7a77b8ff4ad973005adf8cf))
+
 ## [1.1.1](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.0...v1.1.1) (2022-01-26)
 
 
