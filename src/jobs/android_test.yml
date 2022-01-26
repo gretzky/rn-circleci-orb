@@ -4,6 +4,10 @@ executor: macos
 
 parameters:
   # For this job
+  attach_workspace:
+    description: Boolean for whether or not to attach to an existing workspace. Default is true.
+    type: boolean
+    default: true
   workspace_root:
     description: Workspace root path that is either an absolute path or a path relative to the working directory. Defaults to '.' (the working directory).
     type: string
@@ -26,9 +30,9 @@ parameters:
     type: string
     default: "29.0.3"
   logcat_grep:
-    description: ADB logs will be shown in the "Start Android Emulator" commands, but we filter it using grep to avoid noise. You can specify additional strings to grep for. Make sure you escape special characters. Defaults to 'com.reactnativecommunity'.
+    description: ADB logs will be shown in the "Start Android Emulator" commands, but we filter it using grep to avoid noise. You can specify additional strings to grep for. Make sure you escape special characters.
     type: string
-    default: "com.reactnativecommunity"
+    default: "com.org.name"
   # For the detox command
   detox_configuration:
     description: The Detox configuration to test. Defaults to 'android.emu.release'.
@@ -43,10 +47,6 @@ parameters:
     description: Stores detox artifacts at CircleCI
     type: string
     default: ""
-  should_on_after_initialize:
-    description: Set this to true if you want to run a custom shell command right after yarn install. Provide the command in on_after_initialize_command
-    type: boolean
-    default: false
   on_after_initialize:
     description: A custom command to run right after yarn install.
     type: string
@@ -72,14 +72,22 @@ parameters:
     description: Whether or not to install and configure Detox for e2e testing
     type: boolean
     default: true
+  use_homebrew_cache:
+    description: Whether or not to cache homebrew after install. Defaults to true
+    type: boolean
+    default: true
 
 steps:
-  - attach_workspace:
-      at: <<parameters.workspace_root>>
+  - when:
+      condition: <<parameters.attach_workspace>>
+      steps:
+        - attach_workspace:
+            at: <<parameters.workspace_root>>
 
   - setup_macos_executor:
       node_version: <<parameters.node_version>>
       configure_detox: <<parameters.configure_detox>>
+      use_homebrew_cache: <<parameters.use_homebrew_cache>>
 
   - yarn_install:
       cache: <<parameters.yarn_cache>>
@@ -87,7 +95,7 @@ steps:
       ignore_scripts: <<parameters.yarn_ignore_scripts>>
 
   - when:
-      condition: <<parameters.should_on_after_initialize>>
+      condition: <<parameters.on_after_initialize>>
       steps:
         - run:
             name: "on_after_initialize"

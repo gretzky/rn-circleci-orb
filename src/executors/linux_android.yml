@@ -15,9 +15,12 @@ parameters:
     description: Changes the resource class of the executor. Requires a support request to enable the resource_class parameter. See https://circleci.com/docs/2.0/configuration-reference/#resource_class
     type: string
     default: medium
+
 docker:
   - image: reactnativecommunity/react-native-android
+
 resource_class: <<parameters.resource_class>>
+
 environment:
   - NODE_OPTIONS: <<parameters.node_options>>
   - _JAVA_OPTIONS: <<parameters.java_options>>

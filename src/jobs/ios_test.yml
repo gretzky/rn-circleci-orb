@@ -87,6 +87,10 @@ parameters:
     description: Whether or not to install and configure Detox for e2e testing
     type: boolean
     default: true
+  use_homebrew_cache:
+    description: Whether or not to cache homebrew after install. Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - when:
@@ -103,6 +107,7 @@ steps:
   - setup_macos_executor:
       node_version: <<parameters.node_version>>
       configure_detox: <<parameters.configure_detox>>
+      use_homebrew_cache: <<parameters.use_homebrew_cache>>
 
   - ios_simulator_start:
       device: <<parameters.device>>

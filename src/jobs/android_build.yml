@@ -32,10 +32,10 @@ parameters:
     type: string
     default: "release"
   bundle_type:
-    description: The type of app to bundle, either 'aab' (Android App Bundles) or 'apk'. Google's recommendation is aab, which is the default.
+    description: The type of app to bundle, either 'aab' (Android App Bundles) or 'apk'. Google's recommendation is aab, but the default is apk since Detox expects an apk.
     type: enum
     enum: ["aab", "apk"]
-    default: "aab"
+    default: "apk"
   on_after_initialize:
     description: A custom command to run right after yarn install.
     type: string
@@ -94,7 +94,7 @@ steps:
               - persist_to_workspace:
                   root: <<parameters.workspace_root>>
                   paths:
-                    - <<parameters.project_path>>/app/build/outputs/bundle/release/app-release.aab
+                    - <<parameters.project_path>>/app/build/outputs/bundle/release
         - when:
             condition:
               equal: [apk, <<parameters.bundle_type>>]
@@ -102,7 +102,7 @@ steps:
               - persist_to_workspace:
                   root: <<parameters.workspace_root>>
                   paths:
-                    - <<parameters.project_path>>/app/build/outputs/apk/release/app-release.apk
+                    - <<parameters.project_path>>/app/build/outputs/apk/release
 
   - when:
       condition: <<parameters.store_artifacts>>
