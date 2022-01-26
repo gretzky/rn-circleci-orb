@@ -87,6 +87,14 @@ parameters:
     description: Whether or not to install and configure Detox for e2e testing
     type: boolean
     default: true
+  screenshot_failing:
+    description: Whether or not to take screenshots of failing tests. Defaults to true
+    type: boolean
+    default: true
+  screenshot_artifact_path:
+    description: Where to store screenshot artifacts. Defaults to /tmp/detox_artifacts
+    type: string
+    default: /tmp/detox_artifacts
 
 steps:
   - when:
