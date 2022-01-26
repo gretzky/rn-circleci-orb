@@ -52,6 +52,10 @@ parameters:
     description: Ignore scripts to be run on yarn commands. Defaults to false
     type: boolean
     default: false
+  use_cache:
+    description: Save and restore cache? Defaults to true.
+    type: boolean
+    default: true
 
 executor: linux_android
 
@@ -83,6 +87,7 @@ steps:
       project_path: <<parameters.project_path>>
       build_type: <<parameters.build_type>>
       bundle_type: <<parameters.bundle_type>>
+      use_cache: <<parameters.use_cache>>
 
   - when:
       condition: <<parameters.persist_to_workspace>>
