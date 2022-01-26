@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.4...v1.1.5) (2022-01-26)
+
+
+### Bug Fixes
+
+* **xcodebuild:** update xcodebuild command ([c20b3cf](https://github.com/gretzky/rn-circleci-orb/commit/c20b3cfc33d95c5d26ce9c656d5ee03644091810))
+
 ## [1.1.4](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.3...v1.1.4) (2022-01-26)
 
 
