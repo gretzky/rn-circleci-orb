@@ -29,7 +29,7 @@ parameters:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
     type: enum
     enum: ["project", "workspace"]
-    default: "project"
+    default: "workspace"
   project_path:
     description: The path to the Xcode project (*.xcodeproj) or the Xcode workspace (*.xcworkspace) that you want to build, relative to the root of the repository.
     type: string
@@ -44,7 +44,7 @@ parameters:
   device:
     description: The type of device you want to build for.
     type: string
-    default: "iPhone X"
+    default: "iPhone 13 Pro"
   scheme:
     description: The scheme to use.
     type: string

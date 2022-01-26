@@ -367,7 +367,7 @@ commands:
         description: The path to the directory to place the derived data, relative to the root of the repository.
         type: string
       device:
-        default: iPhone 12
+        default: iPhone 13
         description: The type of device you want to build for.
         type: string
       project_path:
@@ -403,7 +403,7 @@ commands:
     description: Starts an iOS simulator with the given name.
     parameters:
       device:
-        default: iPhone 12
+        default: iPhone 13
         description: The type of device you want to start.
         type: string
     steps:
@@ -557,7 +557,7 @@ examples:
                 - checkout_code
           - rn/ios_build_and_test:
               build_configuration: Release
-              device: iPhone 11 Pro
+              device: iPhone 13
               name: build_ios_release
               node_version: lts
               project_path: ios/MyApp.xcworkspace
@@ -661,7 +661,7 @@ examples:
                 - checkout_code
           - rn/ios_build_and_test:
               build_configuration: Release
-              device: iPhone 11 Pro
+              device: iPhone 13
               filters:
                 branches:
                   ignore:
@@ -767,7 +767,7 @@ examples:
                 - checkout_code
           - rn/ios_build_and_test:
               build_configuration: Release
-              device: iPhone 11 Pro
+              device: iPhone 13
               name: build_ios_release
               node_version: lts
               project_path: ios/MyApp.xcworkspace
@@ -823,7 +823,7 @@ examples:
                 - checkout_code
           - rn/ios_build_and_test:
               build_configuration: Release
-              device: iPhone 11 Pro
+              device: iPhone 13
               name: build_ios_release
               node_version: lts
               project_path: ios/MyApp.xcworkspace
@@ -1077,7 +1077,7 @@ jobs:
         description: The path to the directory to place the derived data, relative to the root of the repository.
         type: string
       device:
-        default: iPhone 12
+        default: iPhone 13
         description: The type of device you want to build for.
         type: string
       node_version:
@@ -1176,7 +1176,7 @@ jobs:
           - trace
         type: enum
       device:
-        default: iPhone X
+        default: iPhone 13
         description: The type of device you want to build for.
         type: string
       node_version:

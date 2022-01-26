@@ -102,7 +102,7 @@ workflows:
           project_type: workspace
           project_path: ios/MyApp.xcworkspace
           build_configuration: Release
-          device: iPhone 11 Pro
+          device: iPhone 13
           scheme: MyApp
           node_version: "lts"
           requires:

@@ -4,7 +4,7 @@ parameters:
   device:
     description: The type of device you want to start.
     type: string
-    default: "iPhone 12"
+    default: "iPhone 13"
 
 steps:
   - run:
