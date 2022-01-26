@@ -5,17 +5,31 @@ parameters:
     description: The location of the "ios" directory
     type: string
     default: "ios"
+  use_cache:
+    description: Save and restore cache? Defaults to true
+    type: boolean
+    default: true
 
 steps:
-  - restore_cache:
-      key: cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
+  - when:
+      condition: <<parameters.use_cache>>
+      steps:
+        - restore_cache:
+            keys:
+              - cache-pods-{{ checksum "<<parameters.pod_install_directory>>/Podfile.lock" }}-{{ .Environment.CACHE_VERSION }}
+              - cache-pods-
 
   - run:
       name: Install CocoaPods
       command: |
-        cd <<parameters.pod_install_directory>> && pod install --repo-update && cd -
+        cd <<parameters.pod_install_directory>>
+        pod install
+        cd -
 
-  - save_cache:
-      key: cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
-      paths:
-        - <<parameters.pod_install_directory>>/Pods
+  - when:
+      condition: <<parameters.use_cache>>
+      steps:
+        - save_cache:
+            key: cache-pods-{{ checksum "<<parameters.pod_install_directory>>/Podfile.lock" }}-{{ .Environment.CACHE_VERSION }}
+            paths:
+              - <<parameters.pod_install_directory>>/Pods
