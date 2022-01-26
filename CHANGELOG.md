@@ -1,3 +1,11 @@
+## [1.1.6](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.5...v1.1.6) (2022-01-26)
+
+
+### Bug Fixes
+
+* **detox:** add params ([3a2243f](https://github.com/gretzky/rn-circleci-orb/commit/3a2243f8ae5b452955bd1796340be62b8d727da3))
+* **detox:** add screenshot option ([5a8155e](https://github.com/gretzky/rn-circleci-orb/commit/5a8155e6086f52e0148cc7c9a07f0d88a5b16737))
+
 ## [1.1.5](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.4...v1.1.5) (2022-01-26)
 
 
