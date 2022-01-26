@@ -21,6 +21,10 @@ parameters:
     type: boolean
     default: false
   # For the iOS build command
+  pod_install_directory:
+    description: The location of the "ios" directory for `pod install`
+    type: string
+    default: "ios"
   project_type:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
     type: enum
@@ -91,7 +95,8 @@ steps:
       cache_folder: <<parameters.yarn_cache_folder>>
       ignore_scripts: <<parameters.yarn_ignore_scripts>>
 
-  - install_pods
+  - install_pods:
+      pod_install_directory: <<parameters.pod_install_directory>>
 
   - when:
       condition: <<parameters.on_after_initialize>>

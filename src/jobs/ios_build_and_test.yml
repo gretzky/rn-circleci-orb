@@ -21,9 +21,9 @@ parameters:
     type: boolean
     default: false
   pod_install_directory:
-    type: string
-    default: ""
     description: The location of the "ios" directory for `pod install`
+    type: string
+    default: "ios"
   # For the iOS build command
   project_type:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
@@ -44,7 +44,7 @@ parameters:
   device:
     description: The type of device you want to build for.
     type: string
-    default: "iPhone 13 Pro"
+    default: "iPhone 13"
   scheme:
     description: The scheme to use.
     type: string
@@ -124,11 +124,8 @@ steps:
       steps:
         - metro_start
 
-  - when:
-      condition: <<parameters.pod_install_directory>>
-      steps:
-        - install_pods:
-            pod_install_directory: <<parameters.pod_install_directory>>
+  - install_pods:
+      pod_install_directory: <<parameters.pod_install_directory>>
 
   - ios_build:
       project_path: <<parameters.project_path>>
