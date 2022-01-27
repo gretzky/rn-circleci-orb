@@ -6,7 +6,7 @@ parameters:
     type: string
     default: "detoxTestEmulator"
   platform_version:
-    description: The version of android to run on the emulator. Usually in the form of "android-30".
+    description: The version of android to run on the emulator. Usually in the form of "android-28".
     type: string
     default: "android-30"
   build_tools_version:
@@ -16,7 +16,7 @@ parameters:
   logcat_grep:
     description: ADB logs will be shown in the "Start Android Emulator" commands, but we filter it using grep to avoid noise. You can specify additional strings to grep for. Make sure you escape special characters.
     type: string
-    default: "com.org.name"
+    default: "com.reactnativecommunity"
 
 steps:
   - run:
@@ -50,7 +50,7 @@ steps:
       name: Start Android Emulator (background)
       command: |
         $ANDROID_HOME/emulator/emulator @<<parameters.device_name>> -version
-        $ANDROID_HOME/emulator/emulator @<<parameters.device_name>> -cores 1 -gpu auto -accel on -memory 1024 -no-audio -no-snapshot -no-boot-anim -no-window -logcat *:W | grep -i 'ReactNative\|<<parameters.logcat_grep>>'
+        $ANDROID_HOME/emulator/emulator @<<parameters.device_name>> -cores 1 -gpu auto -no-accel -memory 1024 -no-audio -no-snapshot -no-boot-anim -no-window -logcat *:W | grep -i 'ReactNative\|<<parameters.logcat_grep>>'
       background: true
 
   - run:
