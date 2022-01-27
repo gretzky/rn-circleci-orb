@@ -1,3 +1,11 @@
+## [1.2.1](https://github.com/gretzky/rn-circleci-orb/compare/v1.2.0...v1.2.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* **haxm:** remove intl-haxm ([29a93ed](https://github.com/gretzky/rn-circleci-orb/commit/29a93edf8ebfc560ddb2889cd14417dd39403d1c))
+* **macos:** update use_homebrew param ([656af8e](https://github.com/gretzky/rn-circleci-orb/commit/656af8eb129b899230fb485d71b60a0e2469de05))
+
 # [1.2.0](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.6...v1.2.0) (2022-01-27)
 
 
