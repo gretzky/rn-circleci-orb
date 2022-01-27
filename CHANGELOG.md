@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.6...v1.2.0) (2022-01-27)
+
+
+### Features
+
+* **android:** add intel-haxm to macos emulator ([b3ffea5](https://github.com/gretzky/rn-circleci-orb/commit/b3ffea56976636537c6993250e2320143cf0c0b7))
+
 ## [1.1.6](https://github.com/gretzky/rn-circleci-orb/compare/v1.1.5...v1.1.6) (2022-01-26)
 
 
