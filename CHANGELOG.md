@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/gretzky/rn-circleci-orb/compare/v1.2.1...v1.2.2) (2022-01-27)
+
+
+### Bug Fixes
+
+* **android:** fix emulator acceleration ([a5900ec](https://github.com/gretzky/rn-circleci-orb/commit/a5900ec207c6261efc3720a048381ef35d07cba0))
+
 ## [1.2.1](https://github.com/gretzky/rn-circleci-orb/compare/v1.2.0...v1.2.1) (2022-01-27)
 
 
