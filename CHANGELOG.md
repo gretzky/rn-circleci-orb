@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/gretzky/rn-circleci-orb/compare/v1.2.2...v1.2.3) (2022-01-27)
+
+
+### Bug Fixes
+
+* **android:** use headless emulator ([3e5eb2d](https://github.com/gretzky/rn-circleci-orb/commit/3e5eb2d5ea7bda75833cd054cd74dab32dcbfd5a))
+
 ## [1.2.2](https://github.com/gretzky/rn-circleci-orb/compare/v1.2.1...v1.2.2) (2022-01-27)
 
 
