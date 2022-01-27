@@ -65,7 +65,7 @@ steps:
               node -v
 
   - when:
-      condition: <<parameters.use_homebrew>>
+      condition: <<parameters.use_homebrew_cache>>
       steps:
         - save_cache:
             paths:
