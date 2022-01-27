@@ -61,12 +61,11 @@ steps:
               HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask >/dev/null
               HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
               HOMEBREW_NO_AUTO_UPDATE=1 brew install android-commandlinetools >/dev/null
-              HOMEBREW_NO_AUTO_UPDATE=1 brew install intel-haxm
               touch .watchmanconfig
               node -v
 
   - when:
-      condition: <<parameters.use_homebrew_cache>>
+      condition: <<parameters.use_homebrew>>
       steps:
         - save_cache:
             paths:
