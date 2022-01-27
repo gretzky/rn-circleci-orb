@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/gretzky/rn-circleci-orb/compare/v1.2.3...v1.2.4) (2022-01-27)
+
+
+### Bug Fixes
+
+* **emulator:** add emulator params to test usage ([9393fe8](https://github.com/gretzky/rn-circleci-orb/commit/9393fe8d93c5e45bee9e9fbac6c9f41da79446fe))
+
 ## [1.2.3](https://github.com/gretzky/rn-circleci-orb/compare/v1.2.2...v1.2.3) (2022-01-27)
 
 
